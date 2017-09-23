@@ -1,5 +1,5 @@
 # libdiscordpp
-C++ library for the Discord API wrapper
+C++ library for the Discord API wrapper  
 **CURRENTLY PRERELEASE AND NOT DONE AT ALL**
 
 ## Example code
@@ -12,7 +12,7 @@ using libdiscordpp::BotType;
 using libdiscordpp::Events::MessageReceivedEvent;
 using libdiscordpp::Discord;
 
-void main() {
+int main() {
     Discord bot(BotType::Client, "token");
 
     bot.on<MessageReceivedEvent>([] (auto event) { // auto (in this context) is available in C++14
