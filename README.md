@@ -1,16 +1,16 @@
-# libdiscordpp
+# libcordabra
 C++ library for the Discord API wrapper  
 **CURRENTLY PRERELEASE AND NOT DONE AT ALL**
 
 ## Example code
 ```cpp
-#include <libdiscordpp/libdiscordpp>
+#include <libcordabra/libcordabra>
 // Includes all required headers for work
 #include <iostream>
 
-using libdiscordpp::BotType;
-using libdiscordpp::Events::MessageReceivedEvent;
-using libdiscordpp::Discord;
+using libcordabra::BotType;
+using libcordabra::Events::MessageReceivedEvent;
+using libcordabra::Discord;
 
 int main() {
     Discord bot(AccountType::Client, "token");

@@ -4,6 +4,6 @@
 #error "Must be included from witin C++!"
 #endif
 
-namespace libdiscordpp {
+namespace libcordabra {
 #include "discordclient.hpp"
 }

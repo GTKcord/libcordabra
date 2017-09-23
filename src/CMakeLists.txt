@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
-project(libdiscordpp)
+project(cordabra)
 
-set(EXPORTS libdiscordpp discordclient.hpp)
+set(EXPORTS libcordabra discordclient.hpp)
 set(SOURCES discordclient.cpp)
 
-add_library(libdiscordpp SHARED ${EXPORTS} ${SOURCES})
+add_library(cordabra SHARED ${EXPORTS} ${SOURCES})
 
-install(TARGETS libdiscordpp 
+install(TARGETS cordabra 
         LIBRARY DESTINATION lib
 )
 
 install(FILES ${EXPORTS}
-        DESTINATION include/libdiscordpp
+        DESTINATION include/libcordabra
 )
