@@ -1,3 +1,0 @@
-#ifndef LIBDISCORDPP_HPP
-#define LIBDISCORDPP_HPP 
-#endif /* LIBDISCORDPP_HPP */

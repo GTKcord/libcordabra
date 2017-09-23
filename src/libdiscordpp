@@ -1,0 +1,9 @@
+// vim: set syntax=cpp :
+
+#ifndef __cplusplus
+#error "Must be included from witin C++!"
+#endif
+
+namespace libdiscordpp {
+#include "discordclient.hpp"
+}
