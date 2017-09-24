@@ -7,7 +7,7 @@ class Discord;
 
 #include "events/event.hpp"
 #include "token.hpp"
-#include <boost/beast.hpp>
+#include "gateway/gateway.hpp"
 #include <functional>
 #include <map>
 #include <vector>
@@ -19,7 +19,8 @@ class Discord;
 class Discord {
 public:
     /// Constructs a client with type for token
-    Discord(Token token);
+    explicit Discord(Token token);
+    Discord(Gateway::Type type, Token token);
     ~Discord() {
         for (const std::function<void()> &f : delete_calls) {
             f();
@@ -45,6 +46,10 @@ public:
     int work();
 
 private:
+    // gateway
+    Gateway::Type _type;
+    Gateway _gateway;
+
     // C++ static magic allows to map T to a Discord object and a vector like this.
     template <typename T> std::vector<std::function<void(const T &)>, std::function<void(const T &)>> &get_vector() {
         using events::Event;
@@ -60,6 +65,11 @@ private:
         return iter->second;
     }
     std::vector<std::function<void()>> delete_calls;
+
+    Token _token;
+    // exit() handlers
+    bool ended = false;
+    int exit_status = 0;
 };
 
 #endif /* DISCORDCLIENT_HPP */

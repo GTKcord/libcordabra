@@ -3,10 +3,9 @@ project(cordabra)
 
 add_subdirectory(external/)
 
-set(EXPORTS libcordabra discordclient.hpp token.hpp events/event.hpp)
-set(PRIVATES )
-set(SOURCES discordclient.cpp token.cpp)
-add_library(cordabra SHARED ${EXPORTS} ${PRIVATES} ${SOURCES})
+set(EXPORTS libcordabra discordclient.hpp token.hpp gateway/gateway.hpp events/event.hpp gateway/decoder.hpp gateway/decoder/json.hpp)
+set(SOURCES discordclient.cpp token.cpp gateway/gateway.cpp gateway/decoder/json.cpp)
+add_library(cordabra SHARED ${EXPORTS} ${SOURCES})
 
 install(TARGETS cordabra 
         LIBRARY DESTINATION lib

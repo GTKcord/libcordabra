@@ -3,11 +3,7 @@
 #ifndef EVENT_HPP
 #define EVENT_HPP
 
-namespace events {
-class Event;
-}
-
-#include "../discordclient.cpp"
+#include "../discordclient.hpp"
 
 namespace events {
 class Event {
