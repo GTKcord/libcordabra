@@ -1,4 +1,5 @@
 // vim: set syntax=cpp :
+/// Library include file. INCUDE THIS HEADER!
 
 #ifndef __cplusplus
 #error "Must be included from witin C++!"
