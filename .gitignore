@@ -1,3 +1,4 @@
 build
 tags
 *.kdev*
+compile_commands.json

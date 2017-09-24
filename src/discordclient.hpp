@@ -7,6 +7,7 @@ class Discord;
 
 #include "events/event.hpp"
 #include "token.hpp"
+#include <boost/beast.hpp>
 #include <functional>
 #include <map>
 #include <vector>
@@ -36,6 +37,12 @@ public:
         auto events = get_vector<T>();
         events.push_back(std::make_pair(handler, filter));
     }
+
+    /// Sets up and logs in the bot
+    /*
+     * Sets up the event loop and logs the bot into Discord, retrieves all guilds, and fires ReadyEvent.
+     */
+    int work();
 
 private:
     // C++ static magic allows to map T to a Discord object and a vector like this.

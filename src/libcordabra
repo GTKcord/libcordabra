@@ -1,8 +1,8 @@
 // vim: set syntax=cpp :
-/// Library include file. INCUDE THIS HEADER!
+/// Library include file. INCLUDE THIS HEADER!
 
 #ifndef __cplusplus
-#error "Must be included from witin C++!"
+#error "Must be included from within C++!"
 #endif
 
 namespace libcordabra {
