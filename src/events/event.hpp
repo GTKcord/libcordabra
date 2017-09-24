@@ -12,7 +12,14 @@ class Event;
 namespace events {
 class Event {
 public:
-    Discord *client();
+    Event(Discord *client) : _client(client) {
+    }
+    Discord *client() {
+        return _client;
+    }
+
+private:
+    Discord *_client;
 };
 }
 

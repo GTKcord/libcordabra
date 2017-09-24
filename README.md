@@ -13,7 +13,7 @@ using libcordabra::Events::MessageReceivedEvent;
 using libcordabra::Discord;
 
 int main() {
-    Discord bot(AccountType::Client, "token");
+    Discord bot("token"); // Defaults to bot account. See libcordabra::Token
 
     // on<T>(std::function<void(const T&)>)
     // on<event>(handler)

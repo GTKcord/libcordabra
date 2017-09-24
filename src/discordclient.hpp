@@ -6,13 +6,10 @@
 class Discord;
 
 #include "events/event.hpp"
+#include "token.hpp"
 #include <functional>
 #include <map>
 #include <vector>
-
-using events::Event;
-
-enum class AccountType { Bot, Client };
 
 /// Main class for control
 /**
@@ -21,7 +18,7 @@ enum class AccountType { Bot, Client };
 class Discord {
 public:
     /// Constructs a client with type for token
-    Discord(AccountType type, std::string token);
+    Discord(Token token);
     ~Discord() {
         for (const std::function<void()> &f : delete_calls) {
             f();
@@ -35,19 +32,22 @@ public:
      * The calls will be made every time the event T is invoked if and only if filter confirms the action
      */
     template <typename T>
-    void on(std::function<void(T)> handler, std::function<bool(T)> filter = [](T) { return true; }) {
+    void on(std::function<void(const T &)> handler, std::function<bool(const T &)> filter = [](T) { return true; }) {
         auto events = get_vector<T>();
         events.push_back(std::make_pair(handler, filter));
     }
 
 private:
     // C++ static magic allows to map T to a Discord object and a vector like this.
-    template <typename T> std::vector<std::function<void(T)>, std::function<void(T)>> &get_vector() {
+    template <typename T> std::vector<std::function<void(const T &)>, std::function<void(const T &)>> &get_vector() {
+        using events::Event;
         static_assert(std::is_base_of<Event, T>::value, "Passed T must inherit Event");
-        static std::map<Discord *, std::vector<std::pair<std::function<void(T)>, std::function<void(T)>>>> events;
+        static std::map<Discord *, std::vector<std::pair<std::function<void(const T &)>, std::function<void(const T &)>>>> events;
         auto iter = events.find(this);
         if (iter == events.end()) {
-            iter = events.insert(std::make_pair(this, std::vector<std::function<void(T)>, std::function<void(T)>>())).first;
+            iter = events
+                   .insert(std::make_pair(this, std::vector<std::function<void(const T &)>, std::function<void(const T &)>>()))
+                   .first;
             delete_calls.push_back([this]() { events.erase(this); });
         }
         return iter->second;
