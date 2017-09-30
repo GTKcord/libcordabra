@@ -1,20 +1,24 @@
 #ifndef GATEWAY_HPP
 #define GATEWAY_HPP
 
-class Gateway;
-#include "decoder/json.hpp"
+#include "decoder.hpp"
 
+class Discord;
+enum class GatewayType { JSON };
 class Gateway {
     friend class JsonDecoder;
 
 public:
-    /// The decoder type to use (JSON, and soon ETF)
-    enum Type { JSON };
-    explicit Gateway(Type type);
+    explicit Gateway(Discord *client, GatewayType type);
+    void tick();
     ~Gateway();
 
 private:
+    enum State { GatewayStart };
+
     Decoder *_decoder;
+    Discord *_client;
+    State _state;
 };
 
 #endif /* GATEWAY_HPP */

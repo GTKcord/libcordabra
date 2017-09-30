@@ -3,11 +3,10 @@
 #ifndef DISCORDCLIENT_HPP
 #define DISCORDCLIENT_HPP
 
-class Discord;
-
+#include "endpoints.hpp"
 #include "events/event.hpp"
-#include "token.hpp"
 #include "gateway/gateway.hpp"
+#include "token.hpp"
 #include <functional>
 #include <map>
 #include <vector>
@@ -19,8 +18,7 @@ class Discord;
 class Discord {
 public:
     /// Constructs a client with type for token
-    explicit Discord(Token token);
-    Discord(Gateway::Type type, Token token);
+    explicit Discord(Token token, GatewayType type, std::string apiPrefix);
     ~Discord() {
         for (const std::function<void()> &f : delete_calls) {
             f();
@@ -47,8 +45,9 @@ public:
 
 private:
     // gateway
-    Gateway::Type _type;
+    GatewayType _type;
     Gateway _gateway;
+    Endpoints _endpoints;
 
     // C++ static magic allows to map T to a Discord object and a vector like this.
     template <typename T> std::vector<std::function<void(const T &)>, std::function<void(const T &)>> &get_vector() {
