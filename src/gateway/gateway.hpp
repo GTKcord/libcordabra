@@ -2,23 +2,28 @@
 #define GATEWAY_HPP
 
 #include "decoder.hpp"
+#include <boost/asio/connect.hpp>
+#include <boost/asio/ip/tcp.hpp>
+#include <boost/beast/core.hpp>
+#include <boost/beast/websocket.hpp>
 
-class Discord;
-enum class GatewayType { JSON };
-class Gateway {
-    friend class JsonDecoder;
+namespace libcordabra {
+    class Discord;
+    enum class GatewayType { JSON };
+    class Gateway {
+        friend class JsonDecoder;
 
-public:
-    explicit Gateway(Discord *client, GatewayType type);
-    void tick();
-    ~Gateway();
+    public:
+        explicit Gateway(Discord *client, GatewayType type);
+        void tick();
+        ~Gateway();
 
-private:
-    enum State { GatewayStart };
+    private:
+        enum State { GatewayStart };
 
-    Decoder *_decoder;
-    Discord *_client;
-    State _state;
-};
-
+        Decoder *_decoder;
+        Discord *_client;
+        State _state;
+    };
+}
 #endif /* GATEWAY_HPP */

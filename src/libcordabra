@@ -5,6 +5,4 @@
 #error "Must be included from within C++!"
 #endif
 
-namespace libcordabra {
 #include "discordclient.hpp"
-}

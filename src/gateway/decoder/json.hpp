@@ -3,9 +3,10 @@
 
 #include "../decoder.hpp"
 
-class JsonDecoder : public Decoder {
-public:
-    void decode() override;
-};
-
+namespace libcordabra {
+    class JsonDecoder : public Decoder {
+    public:
+        void decode() override;
+    };
+}
 #endif /* JSON_HPP */

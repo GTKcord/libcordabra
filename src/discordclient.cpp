@@ -1,12 +1,14 @@
 #include "discordclient.hpp"
 
-Discord::Discord(Token token, GatewayType type, std::string apiPrefix)
-: _type(type), _gateway(this, _type), _endpoints(apiPrefix), _token(token) {
-}
-
-int Discord::work() {
-    while (!ended) {
-        _gateway.tick();
+namespace libcordabra {
+    Discord::Discord(Token token, GatewayType type, std::string apiPrefix)
+    : _type(type), _gateway(this, _type), _endpoints(apiPrefix), _token(token) {
     }
-    return exit_status;
+
+    int Discord::work() {
+        while (!ended) {
+            _gateway.tick();
+        }
+        return exit_status;
+    }
 }

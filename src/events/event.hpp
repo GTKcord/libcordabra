@@ -3,22 +3,24 @@
 #ifndef EVENT_HPP
 #define EVENT_HPP
 
-class Discord;
+namespace libcordabra {
+    class Discord;
 
-namespace events {
-class Event {
-    friend class Discord;
-public:
-    Discord *client() {
-        return _client;
-    }
+    namespace events {
+        class Event {
+            friend class Discord;
 
-private:
-    void setClient(Discord *client) {
-        _client = client;
+        public:
+            Discord *client() {
+                return _client;
+            }
+
+        private:
+            void setClient(Discord *client) {
+                _client = client;
+            }
+            Discord *_client;
+        };
     }
-    Discord *_client;
-};
 }
-
 #endif /* EVENT_HPP */

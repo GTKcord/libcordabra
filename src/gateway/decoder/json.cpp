@@ -1,5 +1,6 @@
 #include "json.hpp"
 
-void JsonDecoder::decode() {
-
+namespace libcordabra {
+    void JsonDecoder::decode() {
+    }
 }
