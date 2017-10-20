@@ -2,8 +2,6 @@
 #define GATEWAY_HPP
 
 #include "decoder.hpp"
-#include <boost/asio/connect.hpp>
-#include <boost/asio/ip/tcp.hpp>
 #include <boost/beast/core.hpp>
 #include <boost/beast/websocket.hpp>
 

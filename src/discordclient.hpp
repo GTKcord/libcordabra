@@ -18,6 +18,7 @@ namespace libcordabra {
      * Provides an interface to ID-based getters and the event handler, and general bot control.
      */
     class Discord {
+        friend class Gateway;
     public:
         /// Constructs a client with type for token
         explicit Discord(Token token, GatewayType type, std::string apiPrefix);
