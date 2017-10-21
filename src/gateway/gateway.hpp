@@ -2,8 +2,7 @@
 #define GATEWAY_HPP
 
 #include "decoder.hpp"
-#include <boost/beast/core.hpp>
-#include <boost/beast/websocket.hpp>
+#include <string>
 
 namespace libcordabra {
     class Discord;
@@ -19,6 +18,7 @@ namespace libcordabra {
     private:
         enum State { GatewayStart };
 
+        std::string gateway_url;
         Decoder *_decoder;
         Discord *_client;
         State _state;

@@ -19,7 +19,7 @@ namespace libcordabra {
         explicit Endpoints(std::string prefix) : prefix(prefix) {
         }
         /// Looks up and compiles an endpoint URL string
-        std::string getEndpoint(Endpoint endpoint, std::initializer_list<std::string> args = {});
+        std::string get_endpoint(Endpoint endpoint, std::initializer_list<std::string> args = {});
 
     private:
         std::string prefix = "https://discordapp.com/api/";

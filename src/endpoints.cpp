@@ -3,7 +3,7 @@
 #include <exception>
 
 namespace libcordabra {
-    std::string Endpoints::getEndpoint(Endpoint endpoint, std::initializer_list<std::string> args) {
+    std::string Endpoints::get_endpoint(Endpoint endpoint, std::initializer_list<std::string> args) {
         std::string rawpoint = endpointMap[endpoint];
         std::string ret = "";
         auto j = args.begin();
